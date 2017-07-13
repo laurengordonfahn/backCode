@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import OptionsDisplay from './OptionsDisplay';
 import ResultsMenu from './ResultsMenu';
 import SearchBar from './SearchBar';
+import Auto from './autosuggest';
 
 import * as api from '../api';
 
@@ -27,9 +28,9 @@ class App extends Component {
     onQueryAutoCompleteTermsSuccess(response){
         console.log("onQueryAutoCompleteTermsSuccess response", response);
         let termsArray = [];
-        response.displayTermsList.term.forEach( name => {
+        response.displayTermsList.term.forEach( term => {
             let termsDict = {};
-            termsDict["term"] = name;
+            termsDict["name"] = term;
             termsArray.push(termsDict);
 
         });
@@ -66,6 +67,10 @@ class App extends Component {
                     btnName="Search"
                     funcSearch={this.onDrugSearch}
                     funcInput={this.ondrugFragSearch}
+                    terms={this.state.termsArray}
+                />
+                <Auto 
+                    terms={this.state.termsArray}
                 />
             </div>
         );
