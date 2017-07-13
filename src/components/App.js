@@ -9,20 +9,25 @@ import * as api from '../api';
 class App extends Component {
     constructor(){
         super();
-        // this.queryAutoCompleteTerms = this.queryAutoCompleteTerms.bind(this);
+        this.queryAutoCompleteTerms = this.queryAutoCompleteTerms.bind(this);
+        this.onQueryAutoCompleteTermsSuccess = this.onQueryAutoCompleteTermsSuccess.bind(this);
         this.onDrugSearch = this.onDrugSearch.bind(this);
         this.ondrugFragSearch = this.ondrugFragSearch.bind(this);
         this.onDrugFragmentSearchSuccess = this.onDrugFragmentSearchSuccess.bind(this);
     }
 
-    // componentWillMount(){
-    //     this.queryAutoCompleteTerms()
-    // }
+    componentWillMount(){
+        this.queryAutoCompleteTerms()
+    }
 
-    // queryAutoCompleteTerms(){
-    //     api.autoCompleteTerms()
-    //         .then(response => console.log(response))
-    // }
+    onQueryAutoCompleteTermsSuccess(response){
+        console.log("onQueryAutoCompleteTermsSuccess response", response);
+    }
+
+    queryAutoCompleteTerms(){
+        api.autoCompleteTerms()
+            .then(response => this.onQueryAutoCompleteTermsSuccess(response))
+    }
 
     onDrugSearch(drugName){
         console.log("onDrugSearch drugName", drugName);
