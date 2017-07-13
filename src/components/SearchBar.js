@@ -9,7 +9,12 @@ class SearchBar extends Component {
     }
 
     handleForm(e) {
-        console.log("handleForm");
+        e.preventDefault();
+
+        const inputVal = this.props.inputVal;
+        const nameSearched = this.inputVal.value;
+
+        this.props.funcSearch(nameSearched);
     }
 
     handleChange() {

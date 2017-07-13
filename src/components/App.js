@@ -11,8 +11,8 @@ class App extends Component {
         this.drugFragSearch = this.drugFragSearch.bind()
     }
 
-    onDrugSearch(){
-        console.log("onDrugSearch drugName");
+    onDrugSearch(drugName){
+        console.log("onDrugSearch drugName", drugName);
     }
 
     drugFragSearch(){
