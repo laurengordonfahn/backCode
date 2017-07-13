@@ -5,10 +5,30 @@ import ResultsMenu from './ResultsMenu';
 import SearchBar from './SearchBar';
 
 class App extends Component {
+    constructor(){
+        super();
+        this.onDrugSearch = this.onDrugSearch.bind()
+        this.drugFragSearch = this.drugFragSearch.bind()
+    }
+
+    onDrugSearch(){
+        console.log("onDrugSearch drugName");
+    }
+
+    drugFragSearch(){
+        console.log("drugFragSearch drugNameFragment");
+    }
+
     render(){
         return(
             <div className="appDiv">
-                <SearchBar />
+                <SearchBar 
+                    inputPlaceholder = "Drug Name"
+                    inputVal="drugName"
+                    btnName="Search"
+                    funcSearch={this.onDrugSearch}
+                    funcInput={this.drugFragSearch}
+                />
             </div>
         );
     }
