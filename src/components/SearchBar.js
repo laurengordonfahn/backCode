@@ -11,7 +11,8 @@ class SearchBar extends Component {
     handleForm(e) {
         e.preventDefault();
 
-        const inputVal = this.props.inputVal;
+        // may not need to clear search
+        //const inputVal = this.props.inputVal;
         const nameSearched = this.inputVal.value;
 
         this.props.funcSearch(nameSearched);

@@ -4,19 +4,40 @@ import OptionsDisplay from './OptionsDisplay';
 import ResultsMenu from './ResultsMenu';
 import SearchBar from './SearchBar';
 
+import * as api from '../api';
+
 class App extends Component {
     constructor(){
         super();
-        this.onDrugSearch = this.onDrugSearch.bind()
-        this.drugFragSearch = this.drugFragSearch.bind()
+        // this.queryAutoCompleteTerms = this.queryAutoCompleteTerms.bind(this);
+        this.onDrugSearch = this.onDrugSearch.bind(this);
+        this.ondrugFragSearch = this.ondrugFragSearch.bind(this);
+        this.onDrugFragmentSearchSuccess = this.onDrugFragmentSearchSuccess.bind(this);
     }
+
+    // componentWillMount(){
+    //     this.queryAutoCompleteTerms()
+    // }
+
+    // queryAutoCompleteTerms(){
+    //     api.autoCompleteTerms()
+    //         .then(response => console.log(response))
+    // }
 
     onDrugSearch(drugName){
         console.log("onDrugSearch drugName", drugName);
     }
 
-    drugFragSearch(drugNameFragment){
+    /// SearchBar Auto Complete Functions /////
+    onDrugFragmentSearchSuccess(response){
+        console.log("onDrugFragmentSearchSuccess response", response);
+    }
+
+    ondrugFragSearch(drugNameFragment){
         console.log("drugFragSearch drugNameFragment", drugNameFragment);
+
+        api.drugFragmentSearch(drugNameFragment)
+            .then(response => this.onDrugFragmentSearchSuccess(response))
     }
 
     render(){
@@ -27,7 +48,7 @@ class App extends Component {
                     inputVal="drugName"
                     btnName="Search"
                     funcSearch={this.onDrugSearch}
-                    funcInput={this.drugFragSearch}
+                    funcInput={this.ondrugFragSearch}
                 />
             </div>
         );
