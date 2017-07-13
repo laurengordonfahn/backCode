@@ -14,6 +14,10 @@ class App extends Component {
         this.onDrugSearch = this.onDrugSearch.bind(this);
         this.ondrugFragSearch = this.ondrugFragSearch.bind(this);
         this.onDrugFragmentSearchSuccess = this.onDrugFragmentSearchSuccess.bind(this);
+
+        this.state = {
+            termsArray : []
+        };
     }
 
     componentWillMount(){
@@ -22,6 +26,14 @@ class App extends Component {
 
     onQueryAutoCompleteTermsSuccess(response){
         console.log("onQueryAutoCompleteTermsSuccess response", response);
+        let termsArray = [];
+        response.displayTermsList.term.forEach( name => {
+            let termsDict = {};
+            termsDict["term"] = name;
+            termsArray.push(termsDict);
+
+        });
+        this.setState({ termsArray });
     }
 
     queryAutoCompleteTerms(){
