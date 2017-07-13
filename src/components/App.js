@@ -15,8 +15,8 @@ class App extends Component {
         console.log("onDrugSearch drugName", drugName);
     }
 
-    drugFragSearch(){
-        console.log("drugFragSearch drugNameFragment");
+    drugFragSearch(drugNameFragment){
+        console.log("drugFragSearch drugNameFragment", drugNameFragment);
     }
 
     render(){

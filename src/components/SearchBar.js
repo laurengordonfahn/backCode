@@ -17,8 +17,10 @@ class SearchBar extends Component {
         this.props.funcSearch(nameSearched);
     }
 
-    handleChange() {
-        console.log("handleChange");
+    handleChange(e) {
+        const nameFragment = e.target.value;
+
+        this.props.funcInput(nameFragment);
     }
 
     render(){
